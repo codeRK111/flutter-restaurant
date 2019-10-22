@@ -291,6 +291,25 @@ class _DetailsWidgetState extends StateMVC<DetailsWidget> {
                                         );
                                       },
                                     ),
+                              Row(
+                                children: <Widget>[
+                                  Expanded(
+                                    child: RaisedButton(
+                                      color: Colors.greenAccent,
+                                      textColor: Colors.white,
+                                      onPressed: () {
+                                        Navigator.of(context)
+                                            .pushNamed('/BookSeat',
+                                                arguments: RouteArgument(
+                                                  id: "2",
+                                                  heroTag: 'home_restaurants',
+                                                ));
+                                      },
+                                      child: Text("Book seat"),
+                                    ),
+                                  )
+                                ],
+                              ),
                               SizedBox(height: 100),
                               _con.reviews.isEmpty
                                   ? SizedBox(height: 5)
@@ -321,6 +340,7 @@ class _DetailsWidgetState extends StateMVC<DetailsWidget> {
                                       child: ReviewsListWidget(
                                           reviewsList: _con.reviews),
                                     ),
+                              SizedBox(height: 100),
                             ],
                           ),
                         ),

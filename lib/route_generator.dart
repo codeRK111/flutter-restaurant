@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_rlutter_ui/src/models/route_argument.dart';
+import 'package:restaurant_rlutter_ui/src/pages/bookSeat.dart';
 import 'package:restaurant_rlutter_ui/src/pages/cart.dart';
 import 'package:restaurant_rlutter_ui/src/pages/category.dart';
 import 'package:restaurant_rlutter_ui/src/pages/checkout.dart';
@@ -24,7 +25,8 @@ class RouteGenerator {
     final args = settings.arguments;
     switch (settings.name) {
       case '/Debug':
-        return MaterialPageRoute(builder: (_) => DebugWidget(routeArgument: args as RouteArgument));
+        return MaterialPageRoute(
+            builder: (_) => DebugWidget(routeArgument: args as RouteArgument));
       case '/':
         return MaterialPageRoute(builder: (_) => Walkthrough());
       case '/SignUp':
@@ -36,30 +38,42 @@ class RouteGenerator {
       case '/Login':
         return MaterialPageRoute(builder: (_) => LoginWidget());
       case '/Pages':
-        return MaterialPageRoute(builder: (_) => PagesTestWidget(currentTab: args));
+        return MaterialPageRoute(
+            builder: (_) => PagesTestWidget(currentTab: args));
       case '/Details':
-        return MaterialPageRoute(builder: (_) => DetailsWidget(routeArgument: args as RouteArgument));
+        return MaterialPageRoute(
+            builder: (_) =>
+                DetailsWidget(routeArgument: args as RouteArgument));
       case '/Map':
         return MaterialPageRoute(builder: (_) => MapWidget());
       case '/Menu':
-        return MaterialPageRoute(builder: (_) => MenuWidget(routeArgument: args as RouteArgument));
+        return MaterialPageRoute(
+            builder: (_) => MenuWidget(routeArgument: args as RouteArgument));
       case '/Food':
-        return MaterialPageRoute(builder: (_) => FoodWidget(routeArgument: args as RouteArgument));
+        return MaterialPageRoute(
+            builder: (_) => FoodWidget(routeArgument: args as RouteArgument));
       case '/Category':
-        return MaterialPageRoute(builder: (_) => CategoryWidget(routeArgument: args as RouteArgument));
+        return MaterialPageRoute(
+            builder: (_) =>
+                CategoryWidget(routeArgument: args as RouteArgument));
       case '/Cart':
         return MaterialPageRoute(builder: (_) => CartWidget());
       case '/Checkout':
-        return MaterialPageRoute(builder: (_) => CheckoutWidget(routeArgument: args as RouteArgument));
+        return MaterialPageRoute(
+            builder: (_) =>
+                CheckoutWidget(routeArgument: args as RouteArgument));
       case '/Languages':
         return MaterialPageRoute(builder: (_) => LanguagesWidget());
       case '/Help':
         return MaterialPageRoute(builder: (_) => HelpWidget());
       case '/Settings':
         return MaterialPageRoute(builder: (_) => SettingsWidget());
+      case '/BookSeat':
+        return MaterialPageRoute(builder: (_) => BookSeat());
       default:
         // If there is no such named route in the switch statement, e.g. /third
-        return MaterialPageRoute(builder: (_) => PagesTestWidget(currentTab: 2));
+        return MaterialPageRoute(
+            builder: (_) => PagesTestWidget(currentTab: 2));
     }
   }
 
