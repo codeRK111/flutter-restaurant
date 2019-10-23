@@ -33,6 +33,9 @@ dependencies:
   shared_preferences: ^0.5.3+4
   flutter_html: ^0.10.4
   flutter_svg: ^0.14.3
+  flutter_datetime_picker: ^1.2.8
+  flutter_picker: ^1.0.15
+  dropdownfield: 1.0.0
 #  location: ^2.3.5
 
 dev_dependencies:

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:restaurant_rlutter_ui/src/controllers/profile_controller.dart';
 import 'package:restaurant_rlutter_ui/src/elements/CircularLoadingWidget.dart';
+import 'package:restaurant_rlutter_ui/src/models/route_argument.dart';
 import 'package:restaurant_rlutter_ui/src/repository/user_repository.dart';
 
 class DrawerWidget extends StatefulWidget {
@@ -48,7 +49,12 @@ class _DrawerWidgetState extends StateMVC<DrawerWidget> {
                 ),
                 ListTile(
                   onTap: () {
-                    Navigator.of(context).pushNamed('/Pages', arguments: 2);
+//                    Navigator.of(context).pushNamed('/Pages', arguments: 2);
+                    Navigator.of(context).pushNamed('/Details',
+                        arguments: RouteArgument(
+                          id: "2",
+                          heroTag: 'home_restaurants',
+                        ));
                   },
                   leading: Icon(
                     Icons.home,

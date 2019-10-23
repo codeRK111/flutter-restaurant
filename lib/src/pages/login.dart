@@ -3,6 +3,7 @@ import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:restaurant_rlutter_ui/config/app_config.dart' as config;
 import 'package:restaurant_rlutter_ui/src/controllers/user_controller.dart';
 import 'package:restaurant_rlutter_ui/src/elements/BlockButtonWidget.dart';
+import 'package:restaurant_rlutter_ui/src/models/route_argument.dart';
 import 'package:restaurant_rlutter_ui/src/repository/user_repository.dart';
 
 class LoginWidget extends StatefulWidget {
@@ -20,7 +21,12 @@ class _LoginWidgetState extends StateMVC<LoginWidget> {
     super.initState();
     getCurrentUser().then((user) {
       if (user.apiToken != null) {
-        Navigator.of(context).pushNamed('/Pages', arguments: 2);
+//        Navigator.of(context).pushNamed('/Pages', arguments: 2);
+        Navigator.of(context).pushNamed('/Details',
+            arguments: RouteArgument(
+              id: "2",
+              heroTag: 'home_restaurants',
+            ));
       }
     });
   }
@@ -48,7 +54,10 @@ class _LoginWidgetState extends StateMVC<LoginWidget> {
               height: config.App(context).appHeight(37),
               child: Text(
                 'Let\'s Start with Login!',
-                style: Theme.of(context).textTheme.display3.merge(TextStyle(color: Theme.of(context).primaryColor)),
+                style: Theme.of(context)
+                    .textTheme
+                    .display3
+                    .merge(TextStyle(color: Theme.of(context).primaryColor)),
               ),
             ),
           ),
@@ -79,42 +88,73 @@ class _LoginWidgetState extends StateMVC<LoginWidget> {
                     TextFormField(
                       keyboardType: TextInputType.emailAddress,
                       onSaved: (input) => _con.user.email = input,
-                      validator: (input) => !input.contains('@') ? 'Should be a valid email' : null,
+                      validator: (input) => !input.contains('@')
+                          ? 'Should be a valid email'
+                          : null,
                       decoration: InputDecoration(
                         labelText: "Email",
-                        labelStyle: TextStyle(color: Theme.of(context).accentColor),
+                        labelStyle:
+                            TextStyle(color: Theme.of(context).accentColor),
                         contentPadding: EdgeInsets.all(12),
                         hintText: 'johndoe@gmail.com',
-                        hintStyle: TextStyle(color: Theme.of(context).focusColor.withOpacity(0.7)),
-                        prefixIcon: Icon(Icons.alternate_email, color: Theme.of(context).accentColor),
+                        hintStyle: TextStyle(
+                            color:
+                                Theme.of(context).focusColor.withOpacity(0.7)),
+                        prefixIcon: Icon(Icons.alternate_email,
+                            color: Theme.of(context).accentColor),
                         border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Theme.of(context).focusColor.withOpacity(0.2))),
+                            borderSide: BorderSide(
+                                color: Theme.of(context)
+                                    .focusColor
+                                    .withOpacity(0.2))),
                         focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Theme.of(context).focusColor.withOpacity(0.5))),
+                            borderSide: BorderSide(
+                                color: Theme.of(context)
+                                    .focusColor
+                                    .withOpacity(0.5))),
                         enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Theme.of(context).focusColor.withOpacity(0.2))),
+                            borderSide: BorderSide(
+                                color: Theme.of(context)
+                                    .focusColor
+                                    .withOpacity(0.2))),
                       ),
                     ),
                     SizedBox(height: 30),
                     TextFormField(
                       keyboardType: TextInputType.text,
                       onSaved: (input) => _con.user.password = input,
-                      validator: (input) => input.length < 3 ? 'Should be more than 3 characters' : null,
+                      validator: (input) => input.length < 3
+                          ? 'Should be more than 3 characters'
+                          : null,
                       obscureText: true,
                       decoration: InputDecoration(
                         labelText: "Password",
-                        labelStyle: TextStyle(color: Theme.of(context).accentColor),
+                        labelStyle:
+                            TextStyle(color: Theme.of(context).accentColor),
                         contentPadding: EdgeInsets.all(12),
                         hintText: '••••••••••••',
-                        hintStyle: TextStyle(color: Theme.of(context).focusColor.withOpacity(0.7)),
-                        prefixIcon: Icon(Icons.lock_outline, color: Theme.of(context).accentColor),
-                        suffixIcon: Icon(Icons.remove_red_eye, color: Theme.of(context).focusColor),
+                        hintStyle: TextStyle(
+                            color:
+                                Theme.of(context).focusColor.withOpacity(0.7)),
+                        prefixIcon: Icon(Icons.lock_outline,
+                            color: Theme.of(context).accentColor),
+                        suffixIcon: Icon(Icons.remove_red_eye,
+                            color: Theme.of(context).focusColor),
                         border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Theme.of(context).focusColor.withOpacity(0.2))),
+                            borderSide: BorderSide(
+                                color: Theme.of(context)
+                                    .focusColor
+                                    .withOpacity(0.2))),
                         focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Theme.of(context).focusColor.withOpacity(0.5))),
+                            borderSide: BorderSide(
+                                color: Theme.of(context)
+                                    .focusColor
+                                    .withOpacity(0.5))),
                         enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Theme.of(context).focusColor.withOpacity(0.2))),
+                            borderSide: BorderSide(
+                                color: Theme.of(context)
+                                    .focusColor
+                                    .withOpacity(0.2))),
                       ),
                     ),
                     SizedBox(height: 30),
@@ -125,13 +165,13 @@ class _LoginWidgetState extends StateMVC<LoginWidget> {
                       ),
                       color: Theme.of(context).accentColor,
                       onPressed: () {
-                        _con.login();
+                        _con.login(context);
                       },
                     ),
                     SizedBox(height: 25),
                     FlatButton(
                       onPressed: () {
-                        _con.login();
+                        _con.login(context);
                       },
                       padding: EdgeInsets.symmetric(vertical: 14),
                       color: Theme.of(context).accentColor.withOpacity(0.1),

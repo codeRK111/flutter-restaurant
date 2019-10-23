@@ -28,18 +28,13 @@ class _HomeWidgetState extends StateMVC<HomeWidget> {
   void initState() {
     // TODO: implement initState
     super.initState();
-     Timer.run(() {
-        Navigator.of(context).pushNamed('/Details',
-                            arguments: RouteArgument(
-                              id: "2",
-                              heroTag: 'home_restaurants',
-                            ));
-    // you have a valid context here
-  });
+    Timer.run(() {
+      // you have a valid context here
+    });
   }
+
   @override
   Widget build(BuildContext context) {
- 
     return RefreshIndicator(
       onRefresh: _con.refreshHome,
       child: SingleChildScrollView(
@@ -72,7 +67,9 @@ class _HomeWidgetState extends StateMVC<HomeWidget> {
                 ),
               ),
             ),
-            CardsCarouselWidget(restaurantsList: _con.topRestaurants, heroTag: 'home_top_restaurants'),
+            CardsCarouselWidget(
+                restaurantsList: _con.topRestaurants,
+                heroTag: 'home_top_restaurants'),
             ListTile(
               dense: true,
               contentPadding: EdgeInsets.symmetric(horizontal: 20),
@@ -86,10 +83,14 @@ class _HomeWidgetState extends StateMVC<HomeWidget> {
               ),
               subtitle: Text(
                 'Double click on the food to add it to the cart',
-                style: Theme.of(context).textTheme.caption.merge(TextStyle(fontSize: 11)),
+                style: Theme.of(context)
+                    .textTheme
+                    .caption
+                    .merge(TextStyle(fontSize: 11)),
               ),
             ),
-            FoodsCarouselWidget(foodsList: _con.trendingFoods, heroTag: 'home_food_carousel'),
+            FoodsCarouselWidget(
+                foodsList: _con.trendingFoods, heroTag: 'home_food_carousel'),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: ListTile(
