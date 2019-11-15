@@ -93,6 +93,23 @@ class _DrawerWidgetState extends StateMVC<DrawerWidget> {
                 ),
                 ListTile(
                   onTap: () {
+                    Navigator.of(context).pushNamed('/TicketList',
+                        arguments: RouteArgument(
+                          id: "2",
+                          heroTag: 'home_restaurants',
+                        ));
+                  },
+                  leading: Icon(
+                    Icons.format_list_bulleted,
+                    color: Theme.of(context).focusColor.withOpacity(1),
+                  ),
+                  title: Text(
+                    "My Bookings",
+                    style: Theme.of(context).textTheme.subhead,
+                  ),
+                ),
+                ListTile(
+                  onTap: () {
                     Navigator.of(context).pushNamed('/Pages', arguments: 4);
                   },
                   leading: Icon(

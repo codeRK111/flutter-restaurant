@@ -13,7 +13,7 @@ import 'package:restaurant_rlutter_ui/src/helpers/helper.dart';
 import 'package:restaurant_rlutter_ui/src/models/route_argument.dart';
 
 class DetailsWidget extends StatefulWidget {
-  RouteArgument routeArgument;
+  final RouteArgument routeArgument;
 
   DetailsWidget({Key key, this.routeArgument}) : super(key: key);
 
@@ -24,7 +24,6 @@ class DetailsWidget extends StatefulWidget {
 }
 
 class _DetailsWidgetState extends StateMVC<DetailsWidget> {
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
   RestaurantController _con;
 
   _DetailsWidgetState() : super(RestaurantController()) {
@@ -317,25 +316,25 @@ class _DetailsWidgetState extends StateMVC<DetailsWidget> {
                                           );
                                         },
                                       ),
-//                              Row(
-//                                children: <Widget>[
-//                                  Expanded(
-//                                    child: RaisedButton(
-//                                      color: Colors.greenAccent,
-//                                      textColor: Colors.white,
-//                                      onPressed: () {
-//                                        Navigator.of(context)
-//                                            .pushNamed('/BookSeat',
-//                                                arguments: RouteArgument(
-//                                                  id: "2",
-//                                                  heroTag: 'home_restaurants',
-//                                                ));
-//                                      },
-//                                      child: Text("Book seat"),
-//                                    ),
-//                                  )
-//                                ],
-//                              ),
+                                Row(
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: RaisedButton(
+                                        color: Colors.greenAccent,
+                                        textColor: Colors.white,
+                                        onPressed: () {
+                                          Navigator.of(context)
+                                              .pushNamed('/BookSeatNew',
+                                                  arguments: RouteArgument(
+                                                    id: "2",
+                                                    heroTag: 'home_restaurants',
+                                                  ));
+                                        },
+                                        child: Text("Book seat"),
+                                      ),
+                                    )
+                                  ],
+                                ),
                                 SizedBox(height: 100),
                                 _con.reviews.isEmpty
                                     ? SizedBox(height: 5)

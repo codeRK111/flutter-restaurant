@@ -11,7 +11,8 @@ import 'package:restaurant_rlutter_ui/src/repository/user_repository.dart';
 Future<Stream<Restaurant>> getTopRestaurants() async {
   User _user = await getCurrentUser();
   final String _apiToken = 'api_token=${_user.apiToken}';
-  final String url = '${GlobalConfiguration().getString('api_base_url')}restaurants?$_apiToken';
+  final String url =
+      '${GlobalConfiguration().getString('api_base_url')}restaurants?$_apiToken';
 
   final client = new http.Client();
   final streamedRest = await client.send(http.Request('get', Uri.parse(url)));
@@ -29,8 +30,10 @@ Future<Stream<Restaurant>> getTopRestaurants() async {
 Future<Stream<Restaurant>> searchRestaurants(String search) async {
   User _user = await getCurrentUser();
   final String _apiToken = 'api_token=${_user.apiToken}';
-  final String _search = 'search=name:$search;description:$search&searchFields=name:like;description:like';
-  final String url = '${GlobalConfiguration().getString('api_base_url')}restaurants?$_apiToken&$_search';
+  final String _search =
+      'search=name:$search;description:$search&searchFields=name:like;description:like';
+  final String url =
+      '${GlobalConfiguration().getString('api_base_url')}restaurants?$_apiToken&$_search';
 
   final client = new http.Client();
   final streamedRest = await client.send(http.Request('get', Uri.parse(url)));
@@ -48,7 +51,9 @@ Future<Stream<Restaurant>> searchRestaurants(String search) async {
 Future<Stream<Restaurant>> getRestaurant(String id) async {
   User _user = await getCurrentUser();
   final String _apiToken = 'api_token=${_user.apiToken}';
-  final String url = '${GlobalConfiguration().getString('api_base_url')}restaurants/$id?$_apiToken';
+  final String url =
+      '${GlobalConfiguration().getString('api_base_url')}restaurants/$id?$_apiToken';
+  print('url is $url');
 
   final client = new http.Client();
   final streamedRest = await client.send(http.Request('get', Uri.parse(url)));

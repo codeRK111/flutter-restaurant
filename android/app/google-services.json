@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "210862351979",
+    "firebase_url": "https://flutter-pushnotification-424bf.firebaseio.com",
+    "project_id": "flutter-pushnotification-424bf",
+    "storage_bucket": "flutter-pushnotification-424bf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:210862351979:android:e04cbb192a975fbb4b332e",
+        "android_client_info": {
+          "package_name": "com.smartervision.restaurant_rlutter_ui"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "210862351979-te3430ci9idlvgtdtfs2uov7kbiftr6a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNG0mdb8LyqgCduv1PBbb94SPX5qRmbpw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "210862351979-te3430ci9idlvgtdtfs2uov7kbiftr6a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

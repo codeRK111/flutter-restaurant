@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_rlutter_ui/src/models/route_argument.dart';
+import 'package:restaurant_rlutter_ui/src/pages/BookSeatNew.dart';
 import 'package:restaurant_rlutter_ui/src/pages/bookSeat.dart';
+import 'package:restaurant_rlutter_ui/src/pages/bookingInfo.dart';
 import 'package:restaurant_rlutter_ui/src/pages/cart.dart';
 import 'package:restaurant_rlutter_ui/src/pages/category.dart';
 import 'package:restaurant_rlutter_ui/src/pages/checkout.dart';
@@ -18,6 +20,8 @@ import 'package:restaurant_rlutter_ui/src/pages/pages.dart';
 import 'package:restaurant_rlutter_ui/src/pages/settings.dart';
 import 'package:restaurant_rlutter_ui/src/pages/signup.dart';
 import 'package:restaurant_rlutter_ui/src/pages/walkthrough.dart';
+
+import 'src/pages/tableList.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -70,6 +74,16 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => SettingsWidget());
       case '/BookSeat':
         return MaterialPageRoute(builder: (_) => BookSeat());
+      case '/BookSeatNew':
+        return MaterialPageRoute(
+            builder: (_) => BookSeatNew(routeArgument: args as RouteArgument));
+      case '/TicketList':
+        return MaterialPageRoute(
+            builder: (_) => TableList(routeArgument: args as RouteArgument));
+      case '/BookingDetailsPage':
+        return MaterialPageRoute(
+            builder: (_) =>
+                BookingDetails(routeArgument: args as RouteArgument));
       default:
         // If there is no such named route in the switch statement, e.g. /third
         return MaterialPageRoute(

@@ -36,6 +36,8 @@ dependencies:
   flutter_datetime_picker: ^1.2.8
   flutter_picker: ^1.0.15
   dropdownfield: 1.0.0
+  rflutter_alert: ^1.0.3
+  firebase_messaging: ^5.1.6
 #  location: ^2.3.5
 
 dev_dependencies:
@@ -80,6 +82,7 @@ flutter:
     - assets/img/united-arab-emirates.png
     - assets/img/united-states-of-america.png
     - assets/img/marker.png
+    - assets/img/success.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

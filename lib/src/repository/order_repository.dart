@@ -14,6 +14,7 @@ Future<Stream<Order>> getOrders() async {
   final String _apiToken = 'api_token=${_user.apiToken}&';
   final String url =
       '${GlobalConfiguration().getString('api_base_url')}orders?${_apiToken}with=user;foodOrders;foodOrders.food;orderStatus&search=user.id:${_user.id}&searchFields=user.id:=&orderBy=id&sortedBy=desc';
+  print(url);
 
   final client = new http.Client();
   final streamedRest = await client.send(http.Request('get', Uri.parse(url)));
@@ -52,7 +53,8 @@ Future<Order> addOrder(Order order) async {
   CreditCard _creditCard = await getCreditCard();
   order.user = _user;
   final String _apiToken = 'api_token=${_user.apiToken}';
-  final String url = '${GlobalConfiguration().getString('api_base_url')}orders?$_apiToken';
+  final String url =
+      '${GlobalConfiguration().getString('api_base_url')}orders?$_apiToken';
   final client = new http.Client();
   Map params = order.toMap();
   params.addAll(_creditCard.toMap());
