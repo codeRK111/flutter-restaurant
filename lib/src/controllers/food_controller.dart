@@ -65,6 +65,22 @@ class FoodController extends ControllerMVC {
     });
   }
 
+  void addToCartTest(Food food, BuildContext context) async {
+    setState(() {
+      this.loadCart = true;
+    });
+    var _cart = new Cart();
+    _cart.food = food;
+    _cart.extras = [];
+    _cart.quantity = 1.0;
+    addCart(_cart).then((value) {
+      setState(() {
+        this.loadCart = false;
+      });
+      Navigator.of(context).pushNamed('/Cart');
+    });
+  }
+
   void addToFavorite(Food food) async {
     var _favorite = new Favorite();
     _favorite.food = food;

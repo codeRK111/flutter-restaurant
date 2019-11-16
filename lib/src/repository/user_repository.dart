@@ -10,7 +10,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 Future<User> login(User user) async {
   User _user = new User();
   final String url = '${GlobalConfiguration().getString('api_base_url')}login';
+  print('login url $url');
   final client = new http.Client();
+  print(json.encode(user.toMap()));
   final response = await client.post(
     url,
     headers: {HttpHeaders.contentTypeHeader: 'application/json'},
@@ -25,7 +27,8 @@ Future<User> login(User user) async {
 
 Future<User> register(User user) async {
   User _user = new User();
-  final String url = '${GlobalConfiguration().getString('api_base_url')}register';
+  final String url =
+      '${GlobalConfiguration().getString('api_base_url')}register';
   final client = new http.Client();
   final response = await client.post(
     url,
@@ -47,7 +50,8 @@ Future<void> logout() async {
 void setCurrentUser(jsonString) async {
   if (json.decode(jsonString)['data'] != null) {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString('current_user', json.encode(json.decode(jsonString)['data']));
+    await prefs.setString(
+        'current_user', json.encode(json.decode(jsonString)['data']));
   }
 }
 
@@ -72,7 +76,8 @@ Future<CreditCard> getCreditCard() async {
   CreditCard _creditCard = new CreditCard();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   if (prefs.containsKey('credit_card')) {
-    _creditCard = CreditCard.fromJSON(json.decode(await prefs.get('credit_card')));
+    _creditCard =
+        CreditCard.fromJSON(json.decode(await prefs.get('credit_card')));
   }
   return _creditCard;
 }
@@ -80,7 +85,8 @@ Future<CreditCard> getCreditCard() async {
 Future<User> update(User user) async {
   User _user = await getCurrentUser();
   final String _apiToken = 'api_token=${_user.apiToken}';
-  final String url = '${GlobalConfiguration().getString('api_base_url')}users/${_user.id}?$_apiToken';
+  final String url =
+      '${GlobalConfiguration().getString('api_base_url')}users/${_user.id}?$_apiToken';
   final client = new http.Client();
   final response = await client.post(
     url,

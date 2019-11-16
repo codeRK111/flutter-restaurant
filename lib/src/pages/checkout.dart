@@ -29,7 +29,10 @@ class _CheckoutWidgetState extends StateMVC<CheckoutWidget> {
         centerTitle: true,
         title: Text(
           'Checkout',
-          style: Theme.of(context).textTheme.title.merge(TextStyle(letterSpacing: 1.3)),
+          style: Theme.of(context)
+              .textTheme
+              .title
+              .merge(TextStyle(letterSpacing: 1.3)),
         ),
       ),
       body: SingleChildScrollView(
@@ -75,7 +78,11 @@ class _CheckoutWidgetState extends StateMVC<CheckoutWidget> {
             SizedBox(
               width: 320,
               child: FlatButton(
-                onPressed: () {},
+                onPressed: () {
+                  _con.scaffoldKey.currentState.showSnackBar(SnackBar(
+                    content: Text('Coming soon'),
+                  ));
+                },
                 padding: EdgeInsets.symmetric(vertical: 12),
                 color: Theme.of(context).focusColor.withOpacity(0.2),
                 shape: StadiumBorder(),
@@ -95,8 +102,8 @@ class _CheckoutWidgetState extends StateMVC<CheckoutWidget> {
                   width: 320,
                   child: FlatButton(
                     onPressed: () {
-                      _con.addOrder(
-                          widget.routeArgument.param[0] as List<Cart>, widget.routeArgument.param[1] as double);
+                      _con.addOrder(widget.routeArgument.param[0] as List<Cart>,
+                          widget.routeArgument.param[1] as double);
                     },
                     padding: EdgeInsets.symmetric(vertical: 14),
                     color: Theme.of(context).accentColor,
@@ -118,10 +125,8 @@ class _CheckoutWidgetState extends StateMVC<CheckoutWidget> {
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Text(
                           Helper.getPrice(widget.routeArgument.param[1]),
-                          style: Theme.of(context)
-                              .textTheme
-                              .display1
-                              .merge(TextStyle(color: Theme.of(context).primaryColor)),
+                          style: Theme.of(context).textTheme.display1.merge(
+                              TextStyle(color: Theme.of(context).primaryColor)),
                         ),
                       )
               ],
