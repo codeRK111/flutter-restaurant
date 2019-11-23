@@ -62,7 +62,7 @@ class _BookSeatNewState extends State<BookSeatNew> {
       'time': time,
       'seats': dropdownValue
     };
-    String url = "http://ladmin.ibnus.io/api/v1/user/bookTable.php";
+    String url = "${baseURL}user/bookTable.php";
     http.Response response = await http.post(url, body: mapBody);
     var res = jsonDecode(response.body);
     print(mapBody.toString());

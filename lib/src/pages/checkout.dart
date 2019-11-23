@@ -5,6 +5,9 @@ import 'package:restaurant_rlutter_ui/src/elements/CreditCardsWidget.dart';
 import 'package:restaurant_rlutter_ui/src/helpers/helper.dart';
 import 'package:restaurant_rlutter_ui/src/models/cart.dart';
 import 'package:restaurant_rlutter_ui/src/models/route_argument.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:restaurant_rlutter_ui/src/utils/constant.dart';
 
 class CheckoutWidget extends StatefulWidget {
   RouteArgument routeArgument;
@@ -19,6 +22,21 @@ class _CheckoutWidgetState extends StateMVC<CheckoutWidget> {
   _CheckoutWidgetState() : super(CheckoutController()) {
     _con = controller;
   }
+
+  Future sendPushNotification() async {
+    print("push");
+    String url = '${baseURL}admin/sendPushNotifications.php';
+    print(url);
+    var mapBody = {
+      'title': 'Sazid Restaurant',
+      'body': 'Got a new order',
+    };
+    http.Response response = await http.post(url, body: mapBody);
+    var res = jsonDecode(response.body);
+    print(mapBody.toString());
+    print(res.toString());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -102,6 +120,8 @@ class _CheckoutWidgetState extends StateMVC<CheckoutWidget> {
                   width: 320,
                   child: FlatButton(
                     onPressed: () {
+                      sendPushNotification();
+
                       _con.addOrder(widget.routeArgument.param[0] as List<Cart>,
                           widget.routeArgument.param[1] as double);
                     },

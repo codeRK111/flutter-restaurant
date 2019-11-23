@@ -3,6 +3,8 @@ import 'package:global_configuration/global_configuration.dart';
 import 'package:restaurant_rlutter_ui/config/app_config.dart' as config;
 import 'package:restaurant_rlutter_ui/route_generator.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:restaurant_rlutter_ui/src/utils/constant.dart';
 
 void main() async {
   await GlobalConfiguration().loadFromAsset("configurations");
@@ -41,14 +43,28 @@ class _MyAppState extends State<MyApp> {
     _firebaseMessaging.configure(
         onMessage: (Map<String, dynamic> message) async {
       print("onMessage ${message.toString()}");
+      showToast(message["notification"]["body"]);
     }, onLaunch: (Map<String, dynamic> message) async {
       print("onLaunch ${message.toString()}");
+      showToast(message["notification"]["body"]);
     }, onResume: (Map<String, dynamic> message) async {
       print("onResume ${message.toString()}");
+      showToast(message["notification"]["body"]);
     });
 
     _firebaseMessaging.requestNotificationPermissions(
         const IosNotificationSettings(sound: true, badge: true, alert: true));
+  }
+
+  void showToast(String message) {
+    Fluttertoast.showToast(
+        msg: message,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIos: 1,
+        backgroundColor: kOrange,
+        textColor: Colors.white,
+        fontSize: 16.0);
   }
 
   @override

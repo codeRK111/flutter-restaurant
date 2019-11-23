@@ -3,8 +3,10 @@ import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:restaurant_rlutter_ui/config/app_config.dart' as config;
 import 'package:restaurant_rlutter_ui/src/controllers/user_controller.dart';
 import 'package:restaurant_rlutter_ui/src/elements/BlockButtonWidget.dart';
+import 'package:restaurant_rlutter_ui/src/elements/CircularLoadingWidget.dart';
 import 'package:restaurant_rlutter_ui/src/models/route_argument.dart';
 import 'package:restaurant_rlutter_ui/src/repository/user_repository.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 class LoginWidget extends StatefulWidget {
   @override
@@ -12,6 +14,7 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends StateMVC<LoginWidget> {
+  FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   UserController _con;
   _LoginWidgetState() : super(UserController()) {
     _con = controller;
@@ -22,21 +25,28 @@ class _LoginWidgetState extends StateMVC<LoginWidget> {
     getCurrentUser().then((user) {
       if (user.apiToken != null) {
 //        Navigator.of(context).pushNamed('/Pages', arguments: 2);
+        setFcm(user.id);
+      }
+    });
+  }
+
+  void setFcm(id) {
+    _firebaseMessaging.getToken().then((token) {
+      _con.setFCMToken(id, token, () {
         Navigator.of(context).pushNamed('/Details',
             arguments: RouteArgument(
               id: "2",
               heroTag: 'home_restaurants',
             ));
-      }
+      });
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      key: _con.scaffoldKey,
-      resizeToAvoidBottomPadding: false,
-      body: Stack(
+  Widget mainWidget(context) {
+    if (_con.loading == true) {
+      return CircularLoadingWidget(height: 500);
+    } else {
+      return Stack(
         alignment: AlignmentDirectional.topCenter,
         children: <Widget>[
           Positioned(
@@ -211,7 +221,16 @@ class _LoginWidgetState extends StateMVC<LoginWidget> {
             ),
           )
         ],
-      ),
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: _con.scaffoldKey,
+      resizeToAvoidBottomPadding: false,
+      body: mainWidget(context),
     );
   }
 }

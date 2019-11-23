@@ -116,6 +116,7 @@ class FoodController extends ControllerMVC {
   }
 
   void calculateTotal() {
+    print("price: " + food.toString());
     total = food.price ?? 0;
     food.extras.forEach((extra) {
       total += extra.checked ? extra.price : 0;

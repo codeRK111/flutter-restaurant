@@ -13,38 +13,40 @@ class ProfileAvatarWidget extends StatelessWidget {
     return Column(
       children: <Widget>[
         Container(
-          height: 160,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//          height: 160,
+          child: Column(
+//            crossAxisAlignment: CrossAxisAlignment.center,
+//            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              SizedBox(
-                width: 50,
-                height: 50,
-                child: FlatButton(
-                  padding: EdgeInsets.all(0),
-                  onPressed: () {},
-                  child: Icon(Icons.add, color: Theme.of(context).primaryColor),
-                  color: Theme.of(context).accentColor,
-                  shape: StadiumBorder(),
-                ),
-              ),
               SizedBox(
                 width: 135,
                 height: 135,
-                child: CircleAvatar(backgroundImage: NetworkImage(user.image.thumb)),
+                child: CircleAvatar(
+                    backgroundImage: NetworkImage(user.image.thumb)),
               ),
-              SizedBox(
-                width: 50,
-                height: 50,
-                child: FlatButton(
-                  padding: EdgeInsets.all(0),
-                  onPressed: () {},
-                  child: Icon(Icons.chat, color: Theme.of(context).primaryColor),
-                  color: Theme.of(context).accentColor,
-                  shape: StadiumBorder(),
-                ),
-              ),
+//              SizedBox(
+//                width: 50,
+//                height: 50,
+//                child: FlatButton(
+//                  padding: EdgeInsets.all(0),
+//                  onPressed: () {},
+//                  child: Icon(Icons.add, color: Theme.of(context).primaryColor),
+//                  color: Theme.of(context).accentColor,
+//                  shape: StadiumBorder(),
+//                ),
+              // )
+
+//              SizedBox(
+//                width: 50,
+//                height: 50,
+//                child: FlatButton(
+//                  padding: EdgeInsets.all(0),
+//                  onPressed: () {},
+//                  child: Icon(Icons.chat, color: Theme.of(context).primaryColor),
+//                  color: Theme.of(context).accentColor,
+//                  shape: StadiumBorder(),
+//                ),
+//              ),
             ],
           ),
         ),

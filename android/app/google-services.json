@@ -1,34 +1,145 @@
 {
   "project_info": {
-    "project_number": "210862351979",
-    "firebase_url": "https://flutter-pushnotification-424bf.firebaseio.com",
-    "project_id": "flutter-pushnotification-424bf",
-    "storage_bucket": "flutter-pushnotification-424bf.appspot.com"
+    "project_number": "1083264903411",
+    "firebase_url": "https://restaurant-b28a2.firebaseio.com",
+    "project_id": "restaurant-b28a2",
+    "storage_bucket": "restaurant-b28a2.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:210862351979:android:e04cbb192a975fbb4b332e",
+        "mobilesdk_app_id": "1:1083264903411:android:3f2a9ca6d050fadf69af86",
         "android_client_info": {
           "package_name": "com.smartervision.restaurant_rlutter_ui"
         }
       },
       "oauth_client": [
         {
-          "client_id": "210862351979-te3430ci9idlvgtdtfs2uov7kbiftr6a.apps.googleusercontent.com",
+          "client_id": "1083264903411-8tia1h42gbevs9sv67nbv4tms1mi184k.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBNG0mdb8LyqgCduv1PBbb94SPX5qRmbpw"
+          "current_key": "AIzaSyDD1_5-yOJQ985tmMW5LaOG58JGD55mZNY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "210862351979-te3430ci9idlvgtdtfs2uov7kbiftr6a.apps.googleusercontent.com",
+              "client_id": "1083264903411-8tia1h42gbevs9sv67nbv4tms1mi184k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1083264903411:android:be02744c1969058d69af86",
+        "android_client_info": {
+          "package_name": "io.ibnus.demoadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1083264903411-qnrgkkdbfo8i15qgrgnk51251o7tbam2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.ibnus.demoadmin",
+            "certificate_hash": "e2730342b3c298574a67d1bb395faae01bfe2d7c"
+          }
+        },
+        {
+          "client_id": "1083264903411-8tia1h42gbevs9sv67nbv4tms1mi184k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDD1_5-yOJQ985tmMW5LaOG58JGD55mZNY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1083264903411-8tia1h42gbevs9sv67nbv4tms1mi184k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1083264903411:android:f22732122cc29fed69af86",
+        "android_client_info": {
+          "package_name": "io.ibnus.restaurantadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1083264903411-evujsr2dc2sitoj2agv357u6rlb29n5l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.ibnus.restaurantadmin",
+            "certificate_hash": "e2730342b3c298574a67d1bb395faae01bfe2d7c"
+          }
+        },
+        {
+          "client_id": "1083264903411-8tia1h42gbevs9sv67nbv4tms1mi184k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDD1_5-yOJQ985tmMW5LaOG58JGD55mZNY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1083264903411-8tia1h42gbevs9sv67nbv4tms1mi184k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1083264903411:android:949d65f08aaf933c69af86",
+        "android_client_info": {
+          "package_name": "io.ibnus.restroadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1083264903411-2bsk4sgbupl9efo853v3k2ck8le2r6nr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.ibnus.restroadmin",
+            "certificate_hash": "e2730342b3c298574a67d1bb395faae01bfe2d7c"
+          }
+        },
+        {
+          "client_id": "1083264903411-8tia1h42gbevs9sv67nbv4tms1mi184k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDD1_5-yOJQ985tmMW5LaOG58JGD55mZNY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1083264903411-8tia1h42gbevs9sv67nbv4tms1mi184k.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

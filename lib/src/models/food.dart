@@ -26,7 +26,7 @@ class Food {
   Food.fromJSON(Map<String, dynamic> jsonMap) {
     id = jsonMap['id'].toString();
     name = jsonMap['name'];
-    price = jsonMap['price'].toDouble();
+    price = jsonMap['price'] != null ? jsonMap['price'].toDouble() : 0;
     discountPrice = jsonMap['discount_price'] != null
         ? jsonMap['discount_price'].toDouble()
         : null;
@@ -57,8 +57,6 @@ class Food {
             .map((element) => Review.fromJSON(element))
             .toList()
         : null;
-
-    print("id is $id");
   }
 
   Map toMap() {

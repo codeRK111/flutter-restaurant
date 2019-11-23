@@ -26,20 +26,25 @@ class Helper {
 
   static Future<Uint8List> getBytesFromAsset(String path, int width) async {
     ByteData data = await rootBundle.load(path);
-    ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(), targetWidth: width);
+    ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(),
+        targetWidth: width);
     ui.FrameInfo fi = await codec.getNextFrame();
-    return (await fi.image.toByteData(format: ui.ImageByteFormat.png)).buffer.asUint8List();
+    return (await fi.image.toByteData(format: ui.ImageByteFormat.png))
+        .buffer
+        .asUint8List();
   }
 
   static Future<Marker> getMarker(Map<String, dynamic> res) async {
-    final Uint8List markerIcon = await getBytesFromAsset('assets/img/marker.png', 120);
+    final Uint8List markerIcon =
+        await getBytesFromAsset('assets/img/marker.png', 120);
     final Marker marker = Marker(
         markerId: MarkerId(res['id']),
         icon: BitmapDescriptor.fromBytes(markerIcon),
         onTap: () {
           //print(res.name);
         },
-        position: LatLng(double.parse(res['latitude']), double.parse(res['longitude'])));
+        position: LatLng(
+            double.parse(res['latitude']), double.parse(res['longitude'])));
 
     return marker;
   }
@@ -52,7 +57,8 @@ class Helper {
     if (rate - rate.floor() > 0) {
       list.add(Icon(Icons.star_half, size: 18, color: Color(0xFFFFB24D)));
     }
-    list.addAll(List.generate(5 - rate.floor() - (rate - rate.floor()).ceil(), (index) {
+    list.addAll(
+        List.generate(5 - rate.floor() - (rate - rate.floor()).ceil(), (index) {
       return Icon(Icons.star_border, size: 18, color: Color(0xFFFFB24D));
     }));
     return list;
@@ -60,9 +66,9 @@ class Helper {
 
   static String getPrice(double myPrice) {
     if (myPrice != null) {
-      return '\$${myPrice.toStringAsFixed(2)}';
+      return '\£${myPrice.toStringAsFixed(2)}';
     }
-    return '\$0.00';
+    return '\£0.00';
   }
 
   static String getTotalOrderPrice(FoodOrder foodOrder, double tax) {
@@ -84,7 +90,8 @@ class Helper {
     return Html(
       blockSpacing: 0,
       data: html,
-      defaultTextStyle: style ?? Theme.of(context).textTheme.body2.merge(TextStyle(fontSize: 14)),
+      defaultTextStyle: style ??
+          Theme.of(context).textTheme.body2.merge(TextStyle(fontSize: 14)),
       useRichText: false,
       customRender: (node, children) {
         if (node is dom.Element) {
@@ -112,8 +119,10 @@ class Helper {
     );
   }
 
-  static String limitString(String text, {int limit = 24, String hiddenText = "..."}) {
-    return text.substring(0, min<int>(limit, text.length)) + (text.length > limit ? hiddenText : '');
+  static String limitString(String text,
+      {int limit = 24, String hiddenText = "..."}) {
+    return text.substring(0, min<int>(limit, text.length)) +
+        (text.length > limit ? hiddenText : '');
   }
 
   static String getCreditCardNumber(String number) {

@@ -41,7 +41,7 @@ class _TableListState extends State<TableList> {
 
   Future<Map<String, dynamic>> getBookingsFromAPI() async {
     String url = baseURL + user + 'getBookingList.php?user_id=1';
-
+    print(url);
     http.Response response = await http.get(url);
     var res = jsonDecode(response.body);
 
@@ -65,6 +65,17 @@ class _TableListState extends State<TableList> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.grey[100],
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.of(context).pushNamed('/BookSeatNew',
+                arguments: RouteArgument(
+                  id: "2",
+                  heroTag: 'home_restaurants',
+                ));
+          },
+          tooltip: 'Increment',
+          child: Icon(Icons.add),
+        ),
         appBar: AppBar(
           iconTheme: IconThemeData(color: Colors.white),
           title: Text(

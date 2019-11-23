@@ -12,7 +12,8 @@ import 'package:restaurant_rlutter_ui/src/repository/user_repository.dart';
 Future<Stream<Food>> getTrendingFoods() async {
   User _user = await getCurrentUser();
   final String _apiToken = 'api_token=${_user.apiToken}&';
-  final String url = '${GlobalConfiguration().getString('api_base_url')}foods?${_apiToken}with=restaurant';
+  final String url =
+      '${GlobalConfiguration().getString('api_base_url')}foods?${_apiToken}with=restaurant';
 
   final client = new http.Client();
   final streamedRest = await client.send(http.Request('get', Uri.parse(url)));
@@ -99,7 +100,8 @@ Future<Favorite> addFavorite(Favorite favorite) async {
   User _user = await getCurrentUser();
   final String _apiToken = 'api_token=${_user.apiToken}';
   favorite.userId = _user.id;
-  final String url = '${GlobalConfiguration().getString('api_base_url')}favorites?$_apiToken';
+  final String url =
+      '${GlobalConfiguration().getString('api_base_url')}favorites?$_apiToken';
   final client = new http.Client();
   final response = await client.post(
     url,
@@ -112,7 +114,8 @@ Future<Favorite> addFavorite(Favorite favorite) async {
 Future<Favorite> removeFavorite(Favorite favorite) async {
   User _user = await getCurrentUser();
   final String _apiToken = 'api_token=${_user.apiToken}';
-  final String url = '${GlobalConfiguration().getString('api_base_url')}favorites/${favorite.id}?$_apiToken';
+  final String url =
+      '${GlobalConfiguration().getString('api_base_url')}favorites/${favorite.id}?$_apiToken';
   final client = new http.Client();
   final response = await client.delete(
     url,
@@ -166,7 +169,7 @@ Future<Stream<Food>> getFeaturedFoodsOfRestaurant(String restaurantId) async {
   // TODO Featured foods only
   final String url =
       '${GlobalConfiguration().getString('api_base_url')}foods?${_apiToken}with=restaurant&search=restaurant_id:$restaurantId&searchFields=restaurant_id:=';
-
+  print("food api $url");
   final client = new http.Client();
   final streamedRest = await client.send(http.Request('get', Uri.parse(url)));
 
@@ -176,6 +179,7 @@ Future<Stream<Food>> getFeaturedFoodsOfRestaurant(String restaurantId) async {
       .map((data) => Helper.getData(data))
       .expand((data) => (data as List))
       .map((data) {
+    //print(data);
     return Food.fromJSON(data);
   });
 }

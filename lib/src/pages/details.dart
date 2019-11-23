@@ -11,6 +11,7 @@ import 'package:restaurant_rlutter_ui/src/elements/ReviewsListWidget.dart';
 import 'package:restaurant_rlutter_ui/src/elements/ShoppingCartFloatButtonWidget.dart';
 import 'package:restaurant_rlutter_ui/src/helpers/helper.dart';
 import 'package:restaurant_rlutter_ui/src/models/route_argument.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DetailsWidget extends StatefulWidget {
   final RouteArgument routeArgument;
@@ -28,6 +29,15 @@ class _DetailsWidgetState extends StateMVC<DetailsWidget> {
 
   _DetailsWidgetState() : super(RestaurantController()) {
     _con = controller;
+  }
+
+  _launchCaller() async {
+    const url = "tel:1234567";
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 
   @override
@@ -214,24 +224,24 @@ class _DetailsWidgetState extends StateMVC<DetailsWidget> {
                                         ),
                                       ),
                                       SizedBox(width: 10),
-                                      SizedBox(
-                                        width: 42,
-                                        height: 42,
-                                        child: FlatButton(
-                                          padding: EdgeInsets.all(0),
-                                          onPressed: () {},
-                                          child: Icon(
-                                            Icons.directions,
-                                            color:
-                                                Theme.of(context).primaryColor,
-                                            size: 24,
-                                          ),
-                                          color: Theme.of(context)
-                                              .accentColor
-                                              .withOpacity(0.9),
-                                          shape: StadiumBorder(),
-                                        ),
-                                      ),
+//                                      SizedBox(
+//                                        width: 42,
+//                                        height: 42,
+//                                        child: FlatButton(
+//                                          padding: EdgeInsets.all(0),
+//                                          onPressed: () {},
+//                                          child: Icon(
+//                                            Icons.directions,
+//                                            color:
+//                                                Theme.of(context).primaryColor,
+//                                            size: 24,
+//                                          ),
+//                                          color: Theme.of(context)
+//                                              .accentColor
+//                                              .withOpacity(0.9),
+//                                          shape: StadiumBorder(),
+//                                        ),
+//                                      ),
                                     ],
                                   ),
                                 ),
@@ -259,7 +269,9 @@ class _DetailsWidgetState extends StateMVC<DetailsWidget> {
                                         height: 42,
                                         child: FlatButton(
                                           padding: EdgeInsets.all(0),
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            _launchCaller();
+                                          },
                                           child: Icon(
                                             Icons.call,
                                             color:

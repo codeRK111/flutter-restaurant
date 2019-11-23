@@ -29,12 +29,17 @@ Future<User> register(User user) async {
   User _user = new User();
   final String url =
       '${GlobalConfiguration().getString('api_base_url')}register';
+
   final client = new http.Client();
   final response = await client.post(
     url,
     headers: {HttpHeaders.contentTypeHeader: 'application/json'},
     body: json.encode(user.toMap()),
   );
+
+  print(url);
+  print(user.toMap().toString());
+  print(json.decode(response.body).toString());
   if (response.statusCode == 200) {
     setCurrentUser(response.body);
     _user = User.fromJSON(json.decode(response.body)['data']);

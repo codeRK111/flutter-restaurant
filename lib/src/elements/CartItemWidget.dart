@@ -10,7 +10,13 @@ class CartItemWidget extends StatefulWidget {
   VoidCallback decrement;
   VoidCallback onDismissed;
 
-  CartItemWidget({Key key, this.cart, this.heroTag, this.increment, this.decrement, this.onDismissed})
+  CartItemWidget(
+      {Key key,
+      this.cart,
+      this.heroTag,
+      this.increment,
+      this.decrement,
+      this.onDismissed})
       : super(key: key);
 
   @override
@@ -32,15 +38,19 @@ class _CartItemWidgetState extends State<CartItemWidget> {
         focusColor: Theme.of(context).accentColor,
         highlightColor: Theme.of(context).primaryColor,
         onTap: () {
-          Navigator.of(context)
-              .pushNamed('/Food', arguments: RouteArgument(id: widget.cart.food.id, heroTag: widget.heroTag));
+          Navigator.of(context).pushNamed('/Food',
+              arguments: RouteArgument(
+                  id: widget.cart.food.id, heroTag: widget.heroTag));
         },
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 7),
           decoration: BoxDecoration(
             color: Theme.of(context).primaryColor.withOpacity(0.9),
             boxShadow: [
-              BoxShadow(color: Theme.of(context).focusColor.withOpacity(0.1), blurRadius: 5, offset: Offset(0, 2)),
+              BoxShadow(
+                  color: Theme.of(context).focusColor.withOpacity(0.1),
+                  blurRadius: 5,
+                  offset: Offset(0, 2)),
             ],
           ),
           child: Row(
@@ -51,7 +61,9 @@ class _CartItemWidgetState extends State<CartItemWidget> {
                 width: 90,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(5)),
-                  image: DecorationImage(image: NetworkImage(widget.cart.food.image.url), fit: BoxFit.cover),
+                  image: DecorationImage(
+                      image: NetworkImage(widget.cart.food.image.url),
+                      fit: BoxFit.cover),
                 ),
               ),
               SizedBox(width: 15),
@@ -70,7 +82,8 @@ class _CartItemWidgetState extends State<CartItemWidget> {
                             style: Theme.of(context).textTheme.subhead,
                           ),
                           Wrap(
-                            children: List.generate(widget.cart.extras.length, (index) {
+                            children: List.generate(widget.cart.extras.length,
+                                (index) {
                               return Text(
                                 widget.cart.extras.elementAt(index).name + ', ',
                                 style: Theme.of(context).textTheme.caption,
@@ -99,7 +112,8 @@ class _CartItemWidgetState extends State<CartItemWidget> {
                           icon: Icon(Icons.add_circle_outline),
                           color: Theme.of(context).hintColor,
                         ),
-                        Text(widget.cart.quantity.toString(), style: Theme.of(context).textTheme.subhead),
+                        Text(widget.cart.quantity.toInt().toString(),
+                            style: Theme.of(context).textTheme.subhead),
                         IconButton(
                           onPressed: () {
                             setState(() {
