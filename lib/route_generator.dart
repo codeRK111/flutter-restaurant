@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_rlutter_ui/src/models/route_argument.dart';
 import 'package:restaurant_rlutter_ui/src/pages/BookSeatNew.dart';
+import 'package:restaurant_rlutter_ui/src/pages/CustomSearch.dart';
 import 'package:restaurant_rlutter_ui/src/pages/bookSeat.dart';
 import 'package:restaurant_rlutter_ui/src/pages/bookingInfo.dart';
 import 'package:restaurant_rlutter_ui/src/pages/cart.dart';
@@ -77,6 +78,8 @@ class RouteGenerator {
       case '/BookSeatNew':
         return MaterialPageRoute(
             builder: (_) => BookSeatNew(routeArgument: args as RouteArgument));
+      case '/CustomSearch':
+        return MaterialPageRoute(builder: (_) => CustomSearch());
       case '/TicketList':
         return MaterialPageRoute(
             builder: (_) => TableList(routeArgument: args as RouteArgument));

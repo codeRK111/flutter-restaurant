@@ -10,7 +10,7 @@ class SearchBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).push(SearchModal());
+        Navigator.of(context).pushNamed('/CustomSearch');
       },
       child: Container(
         padding: EdgeInsets.all(12),
@@ -28,7 +28,10 @@ class SearchBarWidget extends StatelessWidget {
             ),
             Text(
               'Search for restaurants or foods',
-              style: Theme.of(context).textTheme.caption.merge(TextStyle(fontSize: 14)),
+              style: Theme.of(context)
+                  .textTheme
+                  .caption
+                  .merge(TextStyle(fontSize: 14)),
             )
           ],
         ),
